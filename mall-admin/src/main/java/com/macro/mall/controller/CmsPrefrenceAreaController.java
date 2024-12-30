@@ -33,4 +33,26 @@ public class CmsPrefrenceAreaController {
         List<CmsPrefrenceArea> prefrenceAreaList = prefrenceAreaService.listAll();
         return CommonResult.success(prefrenceAreaList);
     }
+    
+    // 这是一个冒泡排序
+	@ApiOperation("获取所有商品优选")
+	@RequestMapping(value = "/sort", method = RequestMethod.GET)
+	@ResponseBody
+	public CommonResult<List<CmsPrefrenceArea>> sort() {
+		List<CmsPrefrenceArea> prefrenceAreaList = prefrenceAreaService.listAll();
+		for (int i = 0; i < prefrenceAreaList.size() - 1; i++) {
+			for (int j = 0; j < prefrenceAreaList.size() - i - 1; j++) {
+				if (prefrenceAreaList.get(j).getId() > prefrenceAreaList.get(j + 1).getId()) {
+					CmsPrefrenceArea temp = prefrenceAreaList.get(j);
+					prefrenceAreaList.set(j, prefrenceAreaList.get(j + 1));
+					prefrenceAreaList.set(j + 1, temp);
+				}
+			}
+		}
+		return CommonResult.success(prefrenceAreaList);
+	}
+	
+	int aa = 1;
+	int bb = 2;
+	int cc = 3;
 }
