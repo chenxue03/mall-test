@@ -75,4 +75,8 @@ public class AdminUserDetails implements UserDetails {
 			}
 		}
 	}
+	
+	public List<UmsResource> getResourceList() {
+		return resourceList;
+	}
 }
